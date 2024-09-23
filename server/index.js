@@ -15,6 +15,10 @@ const app = express();
 const port = process.env.PORT;
 const databaseURL = process.env.DATABSE_URL;
 
+app.use(cors({
+  origin: "https://chat-app-js-omega.vercel.app",  // Allow only your Vercel frontend
+  credentials: true  // Enable sending credentials (cookies, authorization headers, etc.)
+}));
 app.options('*', cors());  // Allow preflight for all routes
 
 app.use("/uploads/profiles", express.static("uploads/profiles"));
